@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  database: openwire_development
+  encoding: unicode
+  username: openwire
+  password: ""
+
+test:
+  adapter: postgresql
+  database: openwire_test
+  encoding: unicode 
+  username: openwire
+  password: ""
+
+production:
+  adapter: postgresql
+  database: openwire_production
+  encoding: unicode 
+  username: openwire
+  password: ""

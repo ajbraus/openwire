@@ -1,0 +1,12 @@
+<%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %>
+<h3><%= conversation.from %> </h3>
+<dl>
+  <dt><%= conversation.elapsed_time %></dt>
+  <% conversation.messages.each do |message| %>
+  <dd>message.content</dd>
+  <% end %>
+</dl>
+
+<div id="respond">
+  <%= render partial: "form", locals: { :message => message, :conversation => conversation } %>
+</div>
