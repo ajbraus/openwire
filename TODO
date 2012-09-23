@@ -16,6 +16,8 @@ Login -
 
 	add welcome email
 
+
+add sound on message recieve (after async)
 Move Twilio auth into config(yaml)
 Create new twilio phone number for each user
 Add payment gateway
