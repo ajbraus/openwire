@@ -1,0 +1,14 @@
+
+$(function () {
+	"use strict";
+	$('.conversation').not('.conversation .respond').click(function () {
+		$(this).find('.respond').toggle(200);
+	});
+	$('.msg_submit').click(function () {
+		var $this = $(this);
+		$this.parent().parent().parent().parent().fadeOut(200, function () {
+			$this.remove();
+		}, $this);
+	});
+	$("div#flash").delay(2500).slideUp(400);
+});
