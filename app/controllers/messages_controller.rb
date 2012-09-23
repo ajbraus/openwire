@@ -26,8 +26,8 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     if params[:From] 
-      if Conversation.find_by_from_phone(params[:From])
-        @conversation = Conversation.find_by_from_phone(params[:From])
+      if Conversation.find_by_from_phone((params[:From]).slice!(1))
+        @conversation = Conversation.find_by_from_phone((params[:From]).slice!(1))
       else
         @user = User.find_by_phone((params[:To]).slice!(1))
         @conversation = @user.conversations.build
