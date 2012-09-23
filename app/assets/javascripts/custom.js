@@ -7,7 +7,7 @@ $(function () {
 	});
 	$('.respond').click(function(e){
 		e.stopPropagation();
-		e.preventDefault();
+		//e.preventDefault();
 
 	});
 	$('.msg_submit').click(function () {
@@ -17,4 +17,8 @@ $(function () {
 		});
 	});
 	$("div#flash").delay(2500).slideUp(400);
+	$('#new-message').submit(function(){
+		console.log(this);
+
+	});
 });
