@@ -16,7 +16,14 @@ $(function () {
 			//$this.remove();
 		});
 	});
-	$("div#flash").delay(2500).slideUp(400);
+	
+	if  ($("div#flash").length < 2) {
+		$("div#flash").hide();
+	}
+	else {
+		$("div#flash").delay(2500).slideUp(400);
+	}
+
 	$('#new-message').submit(function(){
 		console.log(this);
 
