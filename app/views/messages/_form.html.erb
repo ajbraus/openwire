@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content, rows: "3" %>
+    <%= f.text_area :content, rows: "3", class: "text_area", placeholder: "Enter message", required: true %>
   </div>
-  <%= f.hidden_field :conversation_id, value: conversation.id %>
+  <%= f.hidden_field :conversation_id, value: conversation.id, class: "conversation_id" %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "msg_submit" %>
   </div>
 <% end %>

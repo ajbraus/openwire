@@ -1,15 +1,22 @@
+<div id="appBackground"></div>
 <% @conversations.each do |conversation| %>
-	<%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %>
-	<h3><%= conversation.from_phone %> </h3>
-		<% conversation.messages.each do |message| %>
-			<dl>
-			  <dt><%= message.elapsed_time %></dt>
-			  <dd><%= message.content %></dd>
-			</dl>
-		<% end %>
-	<div id="respond">
-	  <%= render partial: "messages/form", locals: { :message => Message.new, :conversation => conversation } %>
-	</div>
+	<div class="conversation" id="<%= conversation.id%>">
+		<%= link_to 'X', conversation, method: :delete, data: { confirm: 'Are you sure you want to delete this conversation?' }, class: "destroy" %>
+		<h3><%= conversation.from_phone %> </h3>
+			<% conversation.messages.each do |message| %>
+				<% if message.incoming? %>
+				<dl class="incoming message">
+				<% else %>
+				<dl class="outgoing message">
+				<% end %>
+				  <dt><%= message.elapsed_time %></dt>
+				  <dd><%= message.content %></dd>
+				</dl>
+			<% end %>
+		<div class="respond">
+		  <%= render partial: "messages/form", locals: { :message => Message.new, :conversation => conversation } %>
+		</div><!--.respond-->
+	</div><!--.conversation-->
 <% end %>
 
 <%= render partial: "messages/new_form", locals: { :message => Message.new } %>
