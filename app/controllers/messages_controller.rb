@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     if params['From']
-      puts params['From']
+      puts params['From'].slice!(1)
       # if Conversation.find_by_from_phone((params['From']).slice!(1))
       #   @conversation = Conversation.find_by_from_phone((params['From']).slice!(1))
       # else
