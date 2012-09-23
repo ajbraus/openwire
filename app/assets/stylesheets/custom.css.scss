@@ -1,6 +1,7 @@
 body {
 	margin:0;
 	padding:0;
+	font-size: 20px;
 }
 
 #appBackground {
@@ -38,7 +39,8 @@ line-height: 53px;
 }
 .conversation {
 	width: 440px;
-	background: grey;
+	background-color: #E9E9E9;
+	opacity:.7;
 	position: relative;
 	border-radius: 10px;
 	padding: 5px;
@@ -60,7 +62,7 @@ line-height: 53px;
 	padding: 5px;
 	margin: 15px;
 	clear: both;
-	width: 440px;
+width: 370px;
 }
 
 .message {
@@ -81,10 +83,12 @@ line-height: 53px;
 
 .respond {
 	display: none;
+	float: left;
+clear: both;
 }
 
 *:focus { outline:none; }
-input {
+input, textarea {
 	border-radius:5px;
 }
 input:focus, input:selected, input:hover{
@@ -129,4 +133,8 @@ ul.hmenu {
 
 ul.hmenu li {
   display: inline;
+}
+
+.field input[type=text], .field textarea {
+
 }

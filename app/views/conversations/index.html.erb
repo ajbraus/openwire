@@ -2,7 +2,8 @@
 <% @conversations.each do |conversation| %>
 	<div class="conversation" id="<%= conversation.id%>">
 		<%= link_to 'X', conversation, method: :delete, data: { confirm: 'Are you sure you want to delete this conversation?' }, class: "destroy" %>
-		<h3><%= conversation.from_phone %> </h3>
+		<div>
+			<h3><%= conversation.from_phone %> </h3>
 			<% conversation.messages.each do |message| %>
 				<% if message.incoming? %>
 				<dl class="incoming message">
@@ -13,6 +14,7 @@
 				  <dd><%= message.content %></dd>
 				</dl>
 			<% end %>
+		</div>
 		<div class="respond">
 		  <%= render partial: "messages/form", locals: { :message => Message.new, :conversation => conversation } %>
 		</div><!--.respond-->
