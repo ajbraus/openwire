@@ -13,6 +13,17 @@ body {
 	z-index: -10;
 }
 
+#hero-unit {
+	margin:0 auto;
+	width:600px;
+	height:230px;
+	border-radius: 7px;
+	background-color: #E9E9E9;
+	padding:70px;
+	position: absolute;
+	top: 130px;
+}
+
 #flash {
 	color: white;
 background: black;
