@@ -11,7 +11,14 @@
 	<% if flash %>
 		<%= render 'layouts/notice' %>
 	<% end %>
-<%= yield %>
 
+	<% if user_signed_in? %>
+		<%= render 'layouts/header' %>
+	<% else %>
+		<%= render 'layouts/landing_header' %>
+	<% end %>
+<div id="landingWrap">
+	<%= yield %>
+</div>
 </body>
 </html>
