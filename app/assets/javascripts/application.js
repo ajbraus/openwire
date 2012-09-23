@@ -13,17 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-$(function () {
-	"use strict";
-	$('.conversation').not('.conversation .respond').click(function () {
-		$(this).find('.respond').toggle(200);
-	});
-	$('.msg_submit').click(function () {
-		var $this = $(this);
-		$this.parent().parent().parent().parent().fadeOut(200, function () {
-			$this.remove();
-		}, $this);
-	});
-
-});
