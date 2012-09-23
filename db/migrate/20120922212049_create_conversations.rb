@@ -4,6 +4,7 @@ class CreateConversations < ActiveRecord::Migration
       t.references :messages
       t.integer :from_phone
       t.string :from_email
+      t.boolean	:incoming
 
       t.timestamps
     end

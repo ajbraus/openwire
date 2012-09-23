@@ -33,10 +33,14 @@ class MessagesController < ApplicationController
         @conversation.phone = params["From"]
         @conversation.save
       end
-      @message = @conversation.incoming_message.build(params["Body"])
+      @message = @conversation.message.new
+      @message.content = params["Body"]
+      @message.incoming = true
     else
       @conversation = Conversation.find_by_id([:conversation_id])
-      @message = @conversation.outgoing_message.build(params[:message])
+      @message = @conversation.message.new 
+      @message.content = params[:message]
+      @message.incoming = false
     end
 
     respond_to do |format|

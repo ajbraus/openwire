@@ -1,6 +1,4 @@
 class Conversation < ActiveRecord::Base
-  has_many :incoming_messages, class_name: :messages
-  has_many :outgoing_messages, class_name: :messages
   has_many :messages
   belongs_to :user
 
