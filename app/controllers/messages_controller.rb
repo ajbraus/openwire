@@ -26,12 +26,12 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     if params['From']
-      if Conversation.find_by_from_phone((params['From']).slice!(2..10))
-        @conversation = Conversation.find_by_from_phone((params['From']).slice!(2..10))
+      if Conversation.find_by_from_phone((params['From']).slice(2..11))
+        @conversation = Conversation.find_by_from_phone((params['From']).slice(2..11))
       else
-        @user = User.find_by_phone((params['To']).slice!(2..10))
+        @user = User.find_by_phone((params['To']).slice(2..11))
         @conversation = @user.conversations.build
-        @conversation.phone = params['From'].slice!(2..10)
+        @conversation.phone = params['From'].slice(2..11)
         @conversation.save
       end
       @message = @conversation.messages.build(content: params['Body'], 
