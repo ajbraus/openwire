@@ -58,9 +58,19 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         if Rails.env.production?
-          @to = params[:message][:phone]
+          if params[:message][:phone]
+            @to = params[:message][:phone]
+          else
+            @to = params["To"]
+          end
 
           @from = current_user.phone
+
+          if params[:message][:content]
+            @body = params[:message][:content]
+          else
+            @body = params["Body"]
+          end
           twilio_sid = "AC80e970a0930e204d8c4ea3efd7350f8d"
           twilio_token = "a295d3c1888b1958fdb26b2c59b25085"
 
@@ -69,7 +79,7 @@ class MessagesController < ApplicationController
           @twilio_client.account.sms.messages.create(
             :from => "+1"+"#{@from}",
             :to => "+1"+"#{@to}",
-            :body => params[:message][:content]
+            :body => @body
           )
         end
         format.html { redirect_to root_path, notice: 'Message was successfully created.' }
