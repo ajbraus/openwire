@@ -16,7 +16,7 @@
 
 $(function () {
 	"use strict";
-	$('.conversation').click(function () {
+	$('.conversation').not('.conversation .respond').click(function () {
 		$(this).find('.respond').toggle(200);
 	});
 	$('.msg_submit').click(function () {
