@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-  has_many :messages
+  has_many :messages, :dependent => :destroy
   belongs_to :user
 
   attr_accessible :from_phone, :from_email

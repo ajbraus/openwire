@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :phone, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_many :conversations
+  has_many :conversations, :dependent => :destroy
 
   validate :phone, prensence: true, unique: true
   validates_format_of :phone, :with => /\A[0-9]{10}\Z/
