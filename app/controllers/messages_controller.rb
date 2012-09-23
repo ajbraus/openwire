@@ -25,26 +25,45 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     if params["From"] 
-      if Conversation.find_by_id([:conversation_id])
+      if Conversation.find_by_from_phone(params["From"])
         @conversation = Conversation.find_by_from_phone(params["From"])
       else
         @user = User.find_by_phone(params["To"])
-        @conversation = @user.conversation.new
+        @conversation = @user.conversations.build
         @conversation.phone = params["From"]
         @conversation.save
       end
-      @message = @conversation.message.new
+      @message = @conversation.messages.build
       @message.content = params["Body"]
       @message.incoming = true
     else
-      @conversation = Conversation.find_by_id([:conversation_id])
-      @message = @conversation.message.new 
+      if Conversation.find_by_from_phone(params[:phone])
+        @conversation = Conversation.find_by_from_phone(params[:phone])
+      else
+        @conversation = current_user.conversations.build
+        @conversation.from_phone = params[:phone]
+        @conversation.save
+      end
+      @message = @conversation.messages.build 
       @message.content = params[:message]
       @message.incoming = false
     end
 
     respond_to do |format|
       if @message.save
+        @to = params[:message][:phone]
+
+        @from = current_user.phone
+        twilio_sid = "AC80e970a0930e204d8c4ea3efd7350f8d"
+        twilio_token = "a295d3c1888b1958fdb26b2c59b25085"
+
+        @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+        
+        @twilio_client.account.sms.messages.create(
+          :from => "+1"+"#{@from}",
+          :to => "+1"+"#{@to}",
+          :body => params[:message][:content]
+        )
         format.html { redirect_to root_path, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else

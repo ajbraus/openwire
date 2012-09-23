@@ -9,6 +9,10 @@ gem 'pg'
 gem 'thin'
 gem 'devise'
 
+gem 'pry'
+gem 'pow'
+gem 'pry-remote'
+gem 'powder'
 gem 'twilio-ruby'
 
 # Gems used only for assets and not required

@@ -1,1 +1,3 @@
-  <%= render partial: "messages/index", collection: @conversations %>
+  <%= render partial: "messages/index", collection: @conversation %>
+
+<%= render partial: "messages/new_form", locals: { :message => Message.new } %>
