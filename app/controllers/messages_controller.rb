@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
       if Conversation.find_by_from_phone(params["From"])
         @conversation = Conversation.find_by_from_phone(params["From"])
       else
-        @user = User.find_by_phone(params["To"].slice!(1))
+        @user = User.find_by_phone((params["To"]).slice!(1))
         @conversation = @user.conversations.build
         @conversation.phone = params["From"].slice!(1)
         @conversation.save
