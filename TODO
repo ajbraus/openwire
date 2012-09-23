@@ -1,3 +1,20 @@
 TODO
 
+Design
+Front-end (async refresh?)
+
+Move Twilio auth into config(yaml)
 Create new twilio phone number for each user
+Add payment gateway
+figure out Pricing model (flat rate/month + X cents/text)
+asyncronous refresh
+
+canned responses
+mute/block user (30min/24hours)
+search
+if conversation is over 2 weeks old (then archive)
+spelling validation on content of message
+bad language / negative language filter
+
+asyncronous server stack (node)
+	

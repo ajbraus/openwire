@@ -57,20 +57,11 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        if Rails.env.production?
-          if params[:message][:phone]
-            @to = params[:message][:phone]
-          else
-            @to = params["To"]
-          end
-
+        if !@message.incoming? && Rails.env.production?
+          @to = params[:message][:phone]
           @from = current_user.phone
-
-          if params[:message][:content]
-            @body = params[:message][:content]
-          else
-            @body = params["Body"]
-          end
+          @body = params[:message][:content]
+          
           twilio_sid = "AC80e970a0930e204d8c4ea3efd7350f8d"
           twilio_token = "a295d3c1888b1958fdb26b2c59b25085"
 

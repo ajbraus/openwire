@@ -5,5 +5,4 @@ class Message < ActiveRecord::Base
   def elapsed_time
   	Time.diff(Time.now, self.created_at, '%N')[:diff]
   end
-
 end
