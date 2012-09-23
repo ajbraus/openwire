@@ -3,6 +3,19 @@ TODO
 Design
 Front-end (async refresh?)
 
+sign in with username (not email)
+
+Login -
+	Business Name
+	Address
+	Business Type
+	Phone Number
+	Email
+	Username
+	Password
+
+	add welcome email
+
 Move Twilio auth into config(yaml)
 Create new twilio phone number for each user
 Add payment gateway
