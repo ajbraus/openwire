@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.all
+    @conversations = current_user.conversations
 
     respond_to do |format|
       format.html # index.html.erb

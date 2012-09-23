@@ -14,6 +14,7 @@ gem 'pow'
 gem 'pry-remote'
 gem 'powder'
 gem 'twilio-ruby'
+gem 'time_diff'
 
 # Gems used only for assets and not required
 # in production environments by default.

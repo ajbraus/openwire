@@ -1,3 +1,13 @@
-  <%= render partial: "messages/index", collection: @conversation %>
+
+<% @conversations.each do |conversation| %>
+	<%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<h3><%= conversation.from_phone %> </h3>
+  <%= render partial: "messages/index", locals: { :conversation => conversation } %>
+
+	<div id="respond">
+	  <%= render partial: "messages/form", locals: { :message => Message.new, :conversation => conversation } %>
+	</div>
+<% end %>
+
 
 <%= render partial: "messages/new_form", locals: { :message => Message.new } %>

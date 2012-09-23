@@ -33,37 +33,43 @@ class MessagesController < ApplicationController
         @conversation.phone = params["From"]
         @conversation.save
       end
-      @message = @conversation.messages.build
-      @message.content = params["Body"]
-      @message.incoming = true
+      @message = @conversation.messages.build(content: params["Body"], 
+                                              incoming: true)  
     else
-      if Conversation.find_by_from_phone(params[:phone])
+      if Conversation.find_by_id(params[:conversation_id])
         @conversation = Conversation.find_by_from_phone(params[:phone])
+        @message = @conversation.messages.build(phone: params[:message][:phone],
+                                                  content: params[:message][:content], 
+                                                  incoming: false) 
       else
-        @conversation = current_user.conversations.build
-        @conversation.from_phone = params[:phone]
-        @conversation.save
+        @conversation = current_user.conversations.build(from_phone: params[:message][:phone])
+        if @conversation.save
+          @message = @conversation.messages.build(phone: params[:message][:phone],
+                                                  content: params[:message][:content], 
+                                                  incoming: false)         
+        else
+          redirect_to :back, notice: "Conversation could not be sent"
+        end
       end
-      @message = @conversation.messages.build 
-      @message.content = params[:message]
-      @message.incoming = false
     end
 
     respond_to do |format|
       if @message.save
-        @to = params[:message][:phone]
+        if Rails.env.production?
+          @to = params[:message][:phone]
 
-        @from = current_user.phone
-        twilio_sid = "AC80e970a0930e204d8c4ea3efd7350f8d"
-        twilio_token = "a295d3c1888b1958fdb26b2c59b25085"
+          @from = current_user.phone
+          twilio_sid = "AC80e970a0930e204d8c4ea3efd7350f8d"
+          twilio_token = "a295d3c1888b1958fdb26b2c59b25085"
 
-        @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-        
-        @twilio_client.account.sms.messages.create(
-          :from => "+1"+"#{@from}",
-          :to => "+1"+"#{@to}",
-          :body => params[:message][:content]
-        )
+          @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+          
+          @twilio_client.account.sms.messages.create(
+            :from => "+1"+"#{@from}",
+            :to => "+1"+"#{@to}",
+            :body => params[:message][:content]
+          )
+        end
         format.html { redirect_to root_path, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else

@@ -4,9 +4,6 @@ class Conversation < ActiveRecord::Base
 
   attr_accessible :from_phone, :from_email
 
-  def elapsed_time
-  	(Time.now - self.message.last.created_at).strftime("%l") + ":" + (Time.now - self.message.last.created_at).strftime("%M")
-  end
 
   def from
   	if self.phone && !self.email 

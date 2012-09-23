@@ -1,0 +1,8 @@
+<div id="flash">
+  <% if flash[:notice] %>
+    <h3 class="info_box"><%= flash[:notice] %></h3>
+  <% end %>
+  <% if flash[:error] %>
+    <h3 class="error_box"><%= flash[:error] %></h3>
+  <% end %> 
+</div>
