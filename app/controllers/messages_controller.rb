@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
       else
         @user = User.find_by_phone((params['To']).slice(2..11))
         @conversation = @user.conversations.build
-        @conversation.phone = params['From'].slice(2..11)
+        @conversation.from_phone = params['From'].slice(2..11)
         @conversation.save
       end
       @message = @conversation.messages.build(content: params['Body'], 
