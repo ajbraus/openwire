@@ -57,7 +57,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         if !@message.incoming? && Rails.env.production?
-          @to = params[:message][:phone]
+          @to = params[:message][:from_phone]
           @from = current_user.phone
           @body = params[:message][:content]
           
