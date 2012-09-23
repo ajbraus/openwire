@@ -42,7 +42,6 @@ class MessagesController < ApplicationController
         @message = @conversation.messages.build(phone: params[:message][:phone],
                                                   content: params[:message][:content], 
                                                   incoming: false) 
-        binding.remote_pry
       else
         @conversation = current_user.conversations.build(from_phone: params[:message][:phone])
         if @conversation.save
