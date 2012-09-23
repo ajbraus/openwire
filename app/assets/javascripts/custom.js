@@ -12,9 +12,9 @@ $(function () {
 	});
 	$('.msg_submit').click(function () {
 		var $this = $(this);
-		$this.parent().parent().parent().parent().fadeOut(200, function () {
-			$this.remove();
-		}, $this);
+		$this.parent().parent().parent().parent().fadeOut(200, function ($this) {
+			//$this.remove();
+		});
 	});
 	$("div#flash").delay(2500).slideUp(400);
 });
