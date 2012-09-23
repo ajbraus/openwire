@@ -1,8 +1,7 @@
 Openwire::Application.routes.draw do
-
-  resources :conversations do
-    resources :messages
-  end
+  
+  resources :messages
+  resources :conversations 
 
   get "pages/landing"
 

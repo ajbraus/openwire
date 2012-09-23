@@ -36,8 +36,8 @@ class MessagesController < ApplicationController
       @message = @conversation.messages.build(content: params["Body"], 
                                               incoming: true)  
     else
-      if Conversation.find_by_id(params[:conversation_id])
-        @conversation = Conversation.find_by_from_phone(params[:phone])
+      if Conversation.find_by_id(params[:message][:conversation_id])
+        @conversation = Conversation.find_by_id(params[:message][:conversation_id])
         @message = @conversation.messages.build(phone: params[:message][:phone],
                                                   content: params[:message][:content], 
                                                   incoming: false) 

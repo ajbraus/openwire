@@ -14,18 +14,15 @@
 ActiveRecord::Schema.define(:version => 20120922212149) do
 
   create_table "conversations", :force => true do |t|
-    t.integer  "message_id"
     t.integer  "user_id"
     t.string   "from_phone"
     t.string   "from_email"
-    t.boolean  "incoming"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "conversations", ["from_email"], :name => "index_conversations_on_from_email"
   add_index "conversations", ["from_phone"], :name => "index_conversations_on_from_phone"
-  add_index "conversations", ["message_id"], :name => "index_conversations_on_message_id"
 
   create_table "messages", :force => true do |t|
     t.integer  "conversation_id"

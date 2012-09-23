@@ -1,13 +1,15 @@
-
 <% @conversations.each do |conversation| %>
 	<%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %>
 	<h3><%= conversation.from_phone %> </h3>
-  <%= render partial: "messages/index", locals: { :conversation => conversation } %>
-
+		<% conversation.messages.each do |message| %>
+			<dl>
+			  <dt><%= message.elapsed_time %></dt>
+			  <dd><%= message.content %></dd>
+			</dl>
+		<% end %>
 	<div id="respond">
 	  <%= render partial: "messages/form", locals: { :message => Message.new, :conversation => conversation } %>
 	</div>
 <% end %>
-
 
 <%= render partial: "messages/new_form", locals: { :message => Message.new } %>
