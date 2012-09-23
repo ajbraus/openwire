@@ -135,6 +135,17 @@ ul.hmenu li {
   display: inline;
 }
 
-.field input[type=text], .field textarea {
+input[type=text] {
+	height:30px;
+	width: 300px;
+	font-size: 20px;
+	padding: 0 7px;
+	border-radius: 7px;
+}
 
+textarea {
+	width: 300px;
+	font-size: 20px;
+	padding: 0 7px;
+	border-radius: 7px;
 }
