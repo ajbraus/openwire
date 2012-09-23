@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  protect_from_forgery :except => ["create"]
   # GET /messages
   # GET /messages.json
   def index
