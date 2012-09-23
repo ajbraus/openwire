@@ -8,6 +8,7 @@ Create new twilio phone number for each user
 Add payment gateway
 figure out Pricing model (flat rate/month + X cents/text)
 asyncronous refresh
+email client
 
 canned responses
 mute/block user (30min/24hours)

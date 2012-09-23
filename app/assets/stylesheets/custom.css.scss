@@ -3,15 +3,53 @@
 }
 
 .landinglayout {
-	width:960px;	
+	width:960px;
+}
+/* CONVERSATIONS */
+.destroy {
+	width: 20px;
+	background: black;
+	height: 20px;
+	position: absolute;
+	border-radius: 5px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	right: 5px;
+	margin: 5px;
+}
+.conversation {
+	width: 440px;
+	background: grey;
+	position: relative;
+	border-radius: 10px;
+	padding: 5px;
+	float: left;
 }
 
+#new_message {
+	background: lightgray;
+	border-radius: 10px;
+	float: left;
+	padding: 5px;
+	margin: 5px;
+	clear: both;
+	width: 440px;
+}
+
+input {
+	border-radius:5px;
+}
+input:focus, input:selected, input:hover{
+	box-shadow:0px 0px 10px rgba(0, 0, 0, 0.5)
+}
+/* HEADER */
 ul.hmenu {
-  list-style: none;	
+  list-style: none;
   margin: 0 0 2em;
   padding: 0;
 }
 
 ul.hmenu li {
-  display: inline;  
+  display: inline;
 }
