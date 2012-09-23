@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :conversations
 
-  validate :phone, prensence: true
+  validate :phone, prensence: true, unique: true
   validates_format_of :phone, :with => /\A[0-9]{10}\Z/
 end
