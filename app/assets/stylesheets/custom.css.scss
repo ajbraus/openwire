@@ -80,7 +80,6 @@ line-height: 53px;
 
 .message {
 	width: 70%;
-	background: silver;
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 4px 2px 5px black;
@@ -88,10 +87,11 @@ line-height: 53px;
 .incoming {
 	float: right;
 	text-align: right;
+	background-color:#E46E6E;
 }
 .outgoing {
 	float: left;
-	background: darkgrey;
+	background: #5CB85C;
 }
 
 .respond {
